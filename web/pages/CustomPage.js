@@ -1,20 +1,21 @@
-import PropTypes from 'prop-types'
-import React from 'react'
-import Layout from '../components/Layout'
+import React from 'react';
+import PropTypes from 'prop-types';
+import Layout from '../components/Layout';
+import JotformEmbed from 'react-jotform-embed';
 
 class CustomPage extends React.Component {
-  render () {
-    const {config} = this.props
-    return (
-      <Layout config={config}>
-        <h1>A custom page</h1>
-      </Layout>
-    )
+    render () {
+      const {config} = this.props
+      return (
+        <Layout config={config}>
+      <JotformEmbed src="https://form.jotform.com/93215160810144"/>
+        </Layout>
+      )
+    }
   }
-}
-
-CustomPage.propTypes = {
-  config: PropTypes.object
-}
-
-export default CustomPage
+  
+  CustomPage.propTypes = {
+    config: PropTypes.object
+  }
+  
+  export default CustomPage

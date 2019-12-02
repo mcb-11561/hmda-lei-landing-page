@@ -16,5 +16,8 @@
   "devDependencies": {
     "@sanity/cli": "^0.144.0",
     "lerna": "^3.9.0"
+  },
+  "dependencies": {
+    "react-jotform-embed": "^1.0.4"
   }
 }
