@@ -1,0 +1,44 @@
+{
+  "author": "Sanity <hello@sanity.io>",
+  "dependencies": {
+    "@sanity/block-content-to-react": "2.0.7",
+    "@sanity/client": "0.146.0",
+    "@sanity/image-url": "0.140.15",
+    "@zeit/next-css": "1.0.1",
+    "groq": "0.146.0",
+    "lodash": "4.17.15",
+    "next": "9.1.4",
+    "next-seo": "3.1.0",
+    "react": "16.12.0",
+    "react-dom": "16.12.0",
+    "react-inlinesvg": "1.2.0",
+    "react-jotform-embed": "1.0.4",
+    "react-mailchimp-form": "1.0.2",
+    "react-mailchimp-subscribe": "2.1.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "10.0.3",
+    "cssnano": "4.1.10",
+    "eslint": "6.7.2",
+    "eslint-config-standard": "14.1.0",
+    "eslint-config-standard-react": "9.2.0",
+    "eslint-plugin-import": "2.18.2",
+    "eslint-plugin-node": "10.0.0",
+    "eslint-plugin-promise": "4.2.1",
+    "eslint-plugin-react": "7.17.0",
+    "eslint-plugin-standard": "4.0.1",
+    "postcss-import": "12.0.1",
+    "postcss-preset-env": "6.7.0",
+    "sitemap": "5.1.0"
+  },
+  "name": "sanity-nextjs-landing-pages-web",
+  "private": true,
+  "scripts": {
+    "build": "next build && next export && node exportSitemap.js",
+    "dev": "next",
+    "format": "prettier-eslint --write \"**/*.js\" \"!.next/**\" \"!node_modules/**\" \"!out/**\"",
+    "lint": "eslint .",
+    "start": "next start"
+  },
+  "version": "1.0.2"
+}
