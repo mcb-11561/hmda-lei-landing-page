@@ -7,9 +7,9 @@ class CustomPage extends React.Component {
     render () {
       const {config} = this.props
       return (
-        <Layout config={config}>
+        <Layout config={config}> <div>
       <JotformEmbed src="https://form.jotform.com/93215160810144"/>
-        </Layout>
+      </div> </Layout>
       )
     }
   }
