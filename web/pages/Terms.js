@@ -1,7 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Layout from '../components/Layout';
-import Link from "next/link";
+import PropTypes from 'prop-types'
+import React, {Component} from 'react'
+import NextSeo from 'next-seo'
+import groq from 'groq'
+import imageUrlBuilder from '@sanity/image-url'
+import Layout from '../components/Layout'
+import client from '../client'
+import RenderSections from '../components/RenderSections'
+
+const builder = imageUrlBuilder(client)
+const pageQuery = groq`
 
 class Terms extends React.Component {
     render () {
