@@ -8,7 +8,6 @@ import client from '../client'
 import RenderSections from '../components/RenderSections'
 
 const builder = imageUrlBuilder(client)
-const pageQuery = groq`
 
 class Terms extends React.Component {
     render () {
