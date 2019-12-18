@@ -20,8 +20,5 @@ class Terms extends React.Component {
     config: PropTypes.object
   }
   
-
-
-}
   
   export default Terms
