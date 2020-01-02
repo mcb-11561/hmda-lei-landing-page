@@ -1,17 +1,29 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Head from 'next/head'
-
+import { initGA, logPageView } from "./googleAnalytics.js"
 import {LogoJsonLd} from 'next-seo'
 import Header from './Header'
 import Footer from './Footer'
 
+
+
+
 function Layout (props) {
+
   const {config, children} = props
 
   if (!config) {
     console.error('Missing config')
     return <div>Missing config</div>
+  }
+  
+ function componentDidMount () {
+    if (!window.GA_INITIALIZED) {
+      initGA()
+      window.GA_INITIALIZED = true
+    }
+    logPageView()
   }
 
   const {title, mainNavigation, footerNavigation, footerText, logo, url} = config
