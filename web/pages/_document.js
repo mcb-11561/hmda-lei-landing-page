@@ -13,7 +13,9 @@ export default class MyDocument extends Document {
   render () {
     return (
       <Html lang={this.props.lang || 'en'}>
-        <Head />
+        <Head>
+          <link rel="shortcut icon" type="image/x-icon" href="/images/favicon/favicon.ico" />
+        </Head>
         <body>
           <Main />
           <NextScript />
