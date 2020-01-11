@@ -47,16 +47,38 @@ class App extends BaseApp {
   render () {
     const {Component, pageProps} = this.props
     return (
-      <Container>
-        <Component {...pageProps} />
-        <Head>
-        <meta
+      <>
+      <Head>
+          {/* HTML Meta Tags */}
+          <meta
             content="/images/favicon/android-chrome-256x256.png"
             itemProp="image"
             key="google-image"
           />
+          {/* Facebook Meta Tags */}
+          <meta
+            content={`https://hmda-lei.com`}
+            key="facebook-url"
+            property="og:url"
+          />
+          <meta
+            content="/images/favicon/android-chrome-256x256.png"
+            key="facebook-image"
+            property="og:image"
+          />
+          {/* Twitter Meta Tags */}
+          <meta
+            content="summary_large_image"
+            key="twitter-card"
+            name="twitter:card"
+          />
+          <meta
+            content="/images/favicon/android-chrome-256x256.png"
+            key="twitter-iamge"
+            name="twitter:image"
+          />
           {/* Favicon */}
-        <link
+          <link
             href="/images/favicon/apple-touch-icon.png"
             rel="apple-touch-icon"
             sizes="180x180"
@@ -86,7 +108,10 @@ class App extends BaseApp {
             name="msapplication-config"
           />
           <meta content="#ffffff" name="theme-color" /></Head>
+      <Container>
+        <Component {...pageProps} />
       </Container>
+      </>
     )
   }
 }
