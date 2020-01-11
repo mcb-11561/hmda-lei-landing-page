@@ -1,6 +1,7 @@
 import React from 'react'
 import Router from "next/router"
 import withGA from "next-ga"
+import Head from "next/head"
 import BaseApp, {Container} from 'next/app'
 import client from '../client'
 // import 'normalize.css'
@@ -48,7 +49,43 @@ class App extends BaseApp {
     return (
       <Container>
         <Component {...pageProps} />
-        <link rel="shortcut icon" type="image/x-icon" href="/images/favicon/favicon.ico" />
+        <Head>
+        <meta
+            content="/images/favicon/android-chrome-256x256.png"
+            itemProp="image"
+            key="google-image"
+          />
+          {/* Favicon */}
+        <link
+            href="/images/favicon/apple-touch-icon.png"
+            rel="apple-touch-icon"
+            sizes="180x180"
+          />
+          <link
+            href="/images/favicon/favicon-32x32.png"
+            rel="icon"
+            sizes="32x32"
+            type="image/png"
+          />
+          <link
+            href="/images/favicon/favicon-16x16.png"
+            rel="icon"
+            sizes="16x16"
+            type="image/png"
+          />
+          <link href="/images/favicon/site.webmanifest" rel="manifest" />
+          <link
+            color="#5bbad5"
+            href="/images/favicon/safari-pinned-tab.svg"
+            rel="mask-icon"
+          />
+          <link href="/images/favicon/favicon.ico" rel="shortcut icon" />
+          <meta content="#00aba9" name="msapplication-TileColor" />
+          <meta
+            content="/images/favicon/browserconfig.xml"
+            name="msapplication-config"
+          />
+          <meta content="#ffffff" name="theme-color" /></Head>
       </Container>
     )
   }
