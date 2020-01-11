@@ -14,7 +14,6 @@ export default class MyDocument extends Document {
     return (
       <Html lang={this.props.lang || 'en'}>
         <Head>
-          <link rel="shortcut icon" type="image/x-icon" href="/images/favicon/favicon.ico" />
         </Head>
         <body>
           <Main />

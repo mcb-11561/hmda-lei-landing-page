@@ -48,6 +48,7 @@ class App extends BaseApp {
     return (
       <Container>
         <Component {...pageProps} />
+        <link rel="shortcut icon" type="image/x-icon" href="/images/favicon/favicon.ico" />
       </Container>
     )
   }
