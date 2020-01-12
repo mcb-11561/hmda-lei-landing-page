@@ -14,13 +14,6 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "@sanity/cli": "^0.147.3",
     "lerna": "^3.9.0"
-  },
-  "dependencies": {
-    "next": "^9.1.7",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-jotform-embed": "^1.0.4"
   }
 }
