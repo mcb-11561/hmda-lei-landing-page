@@ -14,7 +14,14 @@ function SimpleBlockContent (props) {
     return null
   }
 
-  return <BlockContent blocks={blocks} serializers={serializers} projectId={projectId} dataset={dataset} />
+  return (
+    <BlockContent
+      blocks={blocks}
+      serializers={serializers}
+      projectId={projectId}
+      dataset={dataset}
+    />
+  )
 }
 
 SimpleBlockContent.propTypes = {

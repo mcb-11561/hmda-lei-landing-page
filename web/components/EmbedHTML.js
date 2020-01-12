@@ -6,9 +6,7 @@ function EmbedHTML ({node}) {
   if (!html) {
     return undefined
   }
-  return (
-    <div dangerouslySetInnerHTML={{__html: html}} />
-  )
+  return <div dangerouslySetInnerHTML={{__html: html}} />
 }
 
 EmbedHTML.propTypes = {
