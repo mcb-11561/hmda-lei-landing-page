@@ -1,8 +1,7 @@
 import React from 'react'
-import Router from "next/router"
-import withGA from "next-ga"
-import Head from "next/head"
-import BaseApp, {Container} from 'next/app'
+import Router from 'next/router'
+import withGA from 'next-ga'
+import BaseApp from 'next/app'
 import client from '../client'
 // import 'normalize.css'
 import '../styles/shared.module.css'
@@ -46,12 +45,8 @@ class App extends BaseApp {
 
   render () {
     const {Component, pageProps} = this.props
-    return (
-      <Container>
-        <Component {...pageProps} />
-      </Container>
-    )
+    return <Component {...pageProps} />
   }
 }
 
-export default withGA("UA-155247999-1", Router)(App)
+export default withGA('UA-155247999-1', Router)(App)

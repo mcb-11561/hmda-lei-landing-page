@@ -7,7 +7,7 @@ import styles from './Header.module.css'
 import HamburgerIcon from './icons/Hamburger'
 
 class Header extends Component {
-  state = {showNav: false}
+  state = {showNav: false};
 
   static propTypes = {
     router: PropTypes.shape({
@@ -32,7 +32,7 @@ class Header extends Component {
       }),
       logo: PropTypes.string
     })
-  }
+  };
 
   componentDidMount () {
     const {router} = this.props
@@ -46,14 +46,14 @@ class Header extends Component {
 
   hideMenu = () => {
     this.setState({showNav: false})
-  }
+  };
 
   handleMenuToggle = () => {
     const {showNav} = this.state
     this.setState({
       showNav: !showNav
     })
-  }
+  };
 
   renderLogo = logo => {
     if (!logo || !logo.asset) {
@@ -65,7 +65,7 @@ class Header extends Component {
     }
 
     return <img src={logo.asset.url} alt={logo.title} className={styles.logo} />
-  }
+  };
 
   render () {
     const {title = 'Missing title', navItems, router, logo} = this.props
@@ -82,7 +82,6 @@ class Header extends Component {
               }
             }}
             as='/'
-            prefetch
           >
             <a title={title}>{this.renderLogo(logo)}</a>
           </Link>
@@ -102,7 +101,6 @@ class Header extends Component {
                         query: {slug: slug.current}
                       }}
                       as={`/${slug.current}`}
-                      prefetch
                     >
                       <a data-is-active={isActive ? 'true' : 'false'}>{title}</a>
                     </Link>
