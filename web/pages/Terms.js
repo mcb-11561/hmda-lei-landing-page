@@ -7,8 +7,7 @@ class Terms extends React.Component {
     const {config} = this.props
     return (
       <Layout config={config}>
-        {' '}
-        <div />{' '}
+        <div />
       </Layout>
     )
   }

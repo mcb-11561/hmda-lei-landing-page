@@ -8,10 +8,9 @@ class Services extends React.Component {
     const {config} = this.props
     return (
       <Layout config={config}>
-        {' '}
         <div>
           <JotformEmbed src='https://form.jotform.com/93215160810144' />
-        </div>{' '}
+        </div>
       </Layout>
     )
   }
