@@ -15,6 +15,7 @@
     "@sanity/client": "^0.147.3",
     "@sanity/image-url": "^0.140.15",
     "@zeit/next-css": "^1.0.1",
+    "date-fns": "^2.9.0",
     "groq": "^0.140.0",
     "lodash": "^4.17.11",
     "next": "^8.1.0",
@@ -26,7 +27,10 @@
     "react-inlinesvg": "^0.8.4",
     "react-jotform-embed": "^1.0.4",
     "react-mailchimp-form": "^1.0.1",
-    "react-mailchimp-subscribe": "^2.1.0"
+    "react-mailchimp-subscribe": "^2.1.0",
+    "react-use": "^13.24.0",
+    "swr": "^0.1.16",
+    "unfetch": "^4.1.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
@@ -41,6 +45,7 @@
     "eslint-plugin-standard": "^4.0.1",
     "postcss-import": "^12.0.1",
     "postcss-preset-env": "^6.6.0",
+    "prettier": "^1.19.1",
     "sitemap": "^2.1.0"
   }
 }

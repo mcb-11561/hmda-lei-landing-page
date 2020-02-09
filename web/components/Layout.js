@@ -5,7 +5,7 @@ import {LogoJsonLd} from 'next-seo'
 import Header from './Header'
 import Footer from './Footer'
 
-function Layout (props) {
+function Layout(props) {
   const {config, children} = props
 
   if (!config) {
@@ -32,7 +32,7 @@ function Layout (props) {
 }
 
 Layout.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.node),
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
   config: PropTypes.shape({
     title: PropTypes.string,
     mainNavigation: PropTypes.arrayOf(PropTypes.object),
