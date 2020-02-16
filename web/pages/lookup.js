@@ -3,9 +3,7 @@ import PropTypes from 'prop-types'
 import Layout from '../components/Layout'
 import LookupForm from '../components/LookupForm'
 
-class Lookup extends React.Component {
-  render () {
-    const {config} = this.props
+function LookUp({config}) {
   return (
     <Layout config={config}>
       <div style={{width: '90%', maxWidth: '40rem', margin: '0 auto'}}>
@@ -14,10 +12,9 @@ class Lookup extends React.Component {
     </Layout>
   )
 }
-}
 
-Lookup.propTypes = {
+LookUp.propTypes = {
   config: PropTypes.object
 }
 
-export default Lookup
+export default LookUp
