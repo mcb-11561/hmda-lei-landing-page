@@ -76,12 +76,12 @@ function LookupForm() {
 
             <tbody>
               {data.map((row) => {
-                const {lei, entity} = row.attributes
+                const {lei, entity, registration} = row.attributes
                 return (
                   <tr key={lei} onClick={() => setActiveEntry(row)} style={{cursor: 'pointer'}}>
                     <td>{lei}</td>
                     <td>{entity.legalName.name}</td>
-                    <td>{entity.status}</td>
+                    <td>{registration.status}</td>
                   </tr>
                 )
               })}
