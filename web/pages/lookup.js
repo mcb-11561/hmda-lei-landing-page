@@ -4,6 +4,8 @@ import Layout from '../components/Layout'
 import LookupForm from '../components/LookupForm'
 
 function Lookup({config}) {
+  render () {
+    const {config} = this.props
   return (
     <Layout config={config}>
       <div style={{width: '90%', maxWidth: '40rem', margin: '0 auto'}}>
