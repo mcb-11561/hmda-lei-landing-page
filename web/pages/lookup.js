@@ -4,7 +4,6 @@ import Layout from '../components/Layout'
 import LookupForm from '../components/LookupForm'
 
 class Lookup extends React.Component {
-function Lookup({config}) {
   render () {
     const {config} = this.props
   return (
