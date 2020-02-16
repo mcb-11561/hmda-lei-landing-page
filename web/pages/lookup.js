@@ -15,7 +15,6 @@ class Lookup extends React.Component {
   )
 }
 }
-}
 
 Lookup.propTypes = {
   config: PropTypes.object
