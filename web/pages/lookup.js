@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Layout from '../components/Layout'
 import LookupForm from '../components/LookupForm'
 
+class Lookup extends React.Component {
 function Lookup({config}) {
   render () {
     const {config} = this.props
@@ -13,6 +14,8 @@ function Lookup({config}) {
       </div>
     </Layout>
   )
+}
+}
 }
 
 Lookup.propTypes = {
