@@ -1,3 +1,4 @@
+require('dotenv').config()
 const withCSS = require('@zeit/next-css')
 const client = require('./client')
 
@@ -35,13 +36,16 @@ const reduceRoutes = (obj, route) => {
 }
 
 module.exports = withCSS({
+  env: {
+    STRIPE_PUBLISHABLE_KEY: process.env.STRIPE_PUBLISHABLE_KEY
+  },
   cssModules: true,
   cssLoaderOptions: {
     importLoaders: 1,
     localIdentName: isProduction ? '[hash:base64:5]' : '[name]__[local]___[hash:base64:5]'
   },
-  exportPathMap: function () {
-    return client.fetch(query).then(res => {
+  exportPathMap: function() {
+    return client.fetch(query).then((res) => {
       const {routes = []} = res
       const nextRoutes = {
         // Routes imported from sanity

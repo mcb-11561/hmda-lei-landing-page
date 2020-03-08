@@ -3,14 +3,14 @@
   "name": "sanity-nextjs-landing-pages",
   "version": "1.0.3",
   "scripts": {
-    "build": "lerna run build --parallel",
+    "build": "netlify-lambda build lambda && lerna run build --parallel",
     "build-web": "(cd web && npm run build)",
     "build-studio": "(cd studio && npm run build)",
     "dev": "lerna run dev --parallel",
     "format": "lerna run format",
     "graphql-deploy": "lerna run graphql-deploy",
     "lint": "lerna run lint",
-    "postinstall": "lerna bootstrap",
+    "postinstall": "netlify-lambda install && lerna bootstrap",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
@@ -18,9 +18,14 @@
     "lerna": "^3.9.0"
   },
   "dependencies": {
+    "dotenv": "^8.2.0",
+    "isomorphic-unfetch": "^3.0.0",
+    "netlify-lambda": "^1.6.3",
     "next": "^9.1.7",
+    "node-fetch": "^2.6.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-jotform-embed": "^1.0.4"
+    "react-jotform-embed": "^1.0.4",
+    "stripe": "^8.29.0"
   }
 }
