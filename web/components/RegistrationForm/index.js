@@ -3,11 +3,12 @@
 import React, {useState, useMemo} from 'react'
 import {useAsync, useSetState} from 'react-use'
 import PropTypes from 'prop-types'
-import useSWR from 'swr'
-import fetch from 'unfetch'
 import {loadStripe} from '@stripe/stripe-js'
 import {CardElement, Elements, useStripe, useElements} from '@stripe/react-stripe-js'
-import {useForm} from 'react-hook-form'
+import Select from 'react-select'
+import {useForm, Controller} from 'react-hook-form'
+import useSWR from 'swr'
+import fetch from 'unfetch'
 
 const stripePromise = loadStripe(process.env.STRIPE_PUBLISHABLE_KEY)
 
@@ -16,63 +17,85 @@ const headers = {
   'Content-Type': 'application/json'
 }
 
-const Field = React.forwardRef(({label, name, ...props}, ref) => {
+const Field = React.forwardRef(({label, name, children, ...props}, ref) => {
   return (
     <div>
       <label htmlFor={name}>{label}</label>
-      <div>
-        <input id={name} name={name} ref={ref} {...props} />
-      </div>
+      <div>{children || <input id={name} name={name} ref={ref} {...props} />}</div>
     </div>
   )
 })
 
 function Wizard() {
+  const jurisdictionList = useSWR('/.netlify/functions/jurisdictions', (url) =>
+    fetch(url).then((r) => r.json())
+  )
+
+  const {
+    handleSubmit,
+    register,
+    control,
+    errors,
+    getValues,
+    isSubmitting,
+    isSubmitted,
+    isValid
+  } = useForm()
+
   const stripe = useStripe()
   const elements = useElements()
-  const {handleSubmit, register, errors, getValues, isSubmitting, isSubmitted, isValid} = useForm()
+
   const [paymentMethod, setPaymentMethod] = useState()
   const [stripeError, setStripeError] = useState()
 
   const onSubmit = async (values) => {
-    if (!stripe || !elements) {
-      // Stripe.js has not loaded yet. Make sure to disable
-      // form submission until Stripe.js has loaded.
-      return
-    }
+    console.log(values)
+    // if (!stripe || !elements) {
+    //   // Stripe.js has not loaded yet. Make sure to disable
+    //   // form submission until Stripe.js has loaded.
+    //   return
+    // }
 
-    if (stripeError) {
-      elements.getElement('card').focus()
-      return
-    }
+    // if (stripeError) {
+    //   elements.getElement('card').focus()
+    //   return
+    // }
 
-    console.log(values.firstName, values.lastName, values.email)
+    // const payload = await stripe.createPaymentMethod({
+    //   type: 'card',
+    //   card: elements.getElement(CardElement),
+    //   billing_details: {
+    //     name: `${values.firstName} ${values.lastName}`,
+    //     email: values.email
+    //   }
+    // })
 
-    const payload = await stripe.createPaymentMethod({
-      type: 'card',
-      card: elements.getElement(CardElement),
-      billing_details: {
-        name: `${values.firstName} ${values.lastName}`,
-        email: values.email
-      }
+    // if (payload.error) {
+    //   setStripeError(payload.error)
+    // } else {
+    //   const {paymentMethod} = payload
+    //   setPaymentMethod(paymentMethod)
+
+    //   const result = await fetch('/.netlify/functions/request-lei', {
+    //     headers,
+    //     method: 'POST',
+    //     body: JSON.stringify({...values, paymentMethod: paymentMethod.id})
+    //   })
+    //     .then((res) => res.json())
+    //     .catch(console.error)
+
+    //   return result
+    // }
+
+    const result = await fetch('/.netlify/functions/request-lei', {
+      headers,
+      method: 'POST',
+      body: JSON.stringify({...values, legalJurisdiction: values.legalJurisdiction.value})
     })
+      .then((res) => res.json())
+      .catch(console.error)
 
-    if (payload.error) {
-      setStripeError(payload.error)
-    } else {
-      const {paymentMethod} = payload
-      setPaymentMethod(paymentMethod)
-
-      const result = await fetch('/.netlify/functions/create-lei', {
-        headers,
-        method: 'POST',
-        body: JSON.stringify({...values, paymentMethod: paymentMethod.id})
-      })
-        .then((res) => res.json())
-        .catch(console.error)
-
-      return result
-    }
+    return result
   }
 
   return (
@@ -97,13 +120,18 @@ function Wizard() {
           })}
         />
 
-        <Field
-          name="legalJurisdiction"
-          label="Legal Jurisdiction"
-          ref={register({
-            required: true
-          })}
-        />
+        <Field label="Legal Jurisdiction">
+          <Controller
+            as={<Select options={jurisdictionList.data || []} />}
+            rules={{required: true}}
+            control={control}
+            onChange={([selected]) => {
+              console.log(selected)
+              return selected
+            }}
+            name="legalJurisdiction"
+          />
+        </Field>
 
         <div>
           <label htmlFor="isLevel2">
@@ -113,33 +141,6 @@ function Wizard() {
             </div>
           </label>
         </div>
-      </section>
-      <section>
-        <h3>Company Address</h3>
-
-        <Field
-          name="address"
-          label="Address"
-          ref={register({
-            required: true
-          })}
-        />
-
-        <Field
-          name="city"
-          label="City"
-          ref={register({
-            required: true
-          })}
-        />
-
-        <Field
-          name="postalCode"
-          label="Postal Code"
-          ref={register({
-            required: true
-          })}
-        />
       </section>
 
       <section>
@@ -171,10 +172,10 @@ function Wizard() {
         />
       </section>
 
-      <section>
+      {/* <section>
         <h3>Payment Method</h3>
         <CardElement />
-      </section>
+      </section> */}
 
       <section>
         <h3>Submit Request</h3>
